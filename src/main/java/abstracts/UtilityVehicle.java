@@ -2,15 +2,20 @@ package abstracts;
 
 import interfaces.*;
 import org.apache.log4j.Logger;
-
 import java.util.List;
+import java.util.Objects;
+
 
 public abstract class UtilityVehicle implements Vehicle {
 
-    //log4j var for logging
+    /**
+     * log4j var for logging
+     */
     final static Logger logger = Logger.getLogger(UtilityVehicle.class);
 
-    //Attributes for utilityVehicle
+    /**
+     * Attributes for UtilityVehicle
+     */
     private float fuel;
     private int numberOfGears;
     private int actualGear = 0;
@@ -19,8 +24,7 @@ public abstract class UtilityVehicle implements Vehicle {
     private List<String> kindOfLoads;
 
 
-    //Implementation from vehicle interface
-
+    //Implementation for vehicle interface
     public void accelerateVehicle() {
         System.out.println("Vrum");
     }
@@ -74,8 +78,14 @@ public abstract class UtilityVehicle implements Vehicle {
     }
 
 
-
-    //class constructor
+    /**
+     * Class constructor
+     * @param fuel Fuel of vehicle in liters
+     * @param numberOfGears Number of shift gears
+     * @param loadCapacity Back load capacity
+     * @param numberOfDoors Numeber of doors in the vehicle
+     * @param kindOfLoads Kinds of loads accepted in the truck bed
+     */
     public UtilityVehicle(float fuel, int numberOfGears, float loadCapacity, int numberOfDoors, List<String> kindOfLoads) {
         this.fuel = fuel;
         this.numberOfGears = numberOfGears;
@@ -135,8 +145,6 @@ public abstract class UtilityVehicle implements Vehicle {
     }
 
 
-
-
     @Override
     public String toString() {
         return "UtilityVehicle{" +
@@ -150,6 +158,22 @@ public abstract class UtilityVehicle implements Vehicle {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UtilityVehicle that = (UtilityVehicle) o;
+        return Float.compare(that.fuel, fuel) == 0 &&
+                numberOfGears == that.numberOfGears &&
+                actualGear == that.actualGear &&
+                Float.compare(that.loadCapacity, loadCapacity) == 0 &&
+                numberOfDoors == that.numberOfDoors &&
+                Objects.equals(kindOfLoads, that.kindOfLoads);
+    }
 
+    @Override
+    public int hashCode() {
 
+        return Objects.hash(fuel, numberOfGears, actualGear, loadCapacity, numberOfDoors, kindOfLoads);
+    }
 }
