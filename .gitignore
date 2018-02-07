@@ -1,0 +1,15 @@
+.idea/.name
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/libraries/Maven__junit_junit_3_8_1.xml
+.idea/libraries/Maven__log4j_log4j_1_2_14.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+beginProj.iml
+VehicleJava.iml
+*.class
+
+
+.idea

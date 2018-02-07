@@ -1,4 +1,6 @@
-package interfaces;
+package com.daitangroup.interfaces;
+
+import com.daitangroup.exceptions.EngineException;
 
 public interface Vehicle {
 
@@ -9,8 +11,8 @@ public interface Vehicle {
     void turnLeft();
     void turnRight();
     float checkFuel();
-    void turnVehicleOn();
-    void turnVehicleOff();
+    void turnVehicleOn() throws EngineException;
+    void turnVehicleOff() throws EngineException;
     int changeToNextGear();
     int changeToPreviousGear();
     void putOnNeutral();

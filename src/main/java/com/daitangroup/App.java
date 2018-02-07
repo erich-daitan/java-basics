@@ -1,6 +1,7 @@
 package com.daitangroup;
 
-import org.apache.log4j.BasicConfigurator;
+import com.daitangroup.interfaces.Vehicle;
+import com.daitangroup.vehicleImplementations.VWSaveiroCross;
 
 /**
  * Hello world!
@@ -11,12 +12,11 @@ public class App
     public static void main( String[] args )
     {
 
-        //log4j configuration
-        BasicConfigurator.configure();
-
-
         System.out.println( "Hello World!" );
 
+        Vehicle vei = new VWSaveiroCross();
+
+        vei.changeToNextGear();
 
 
 
