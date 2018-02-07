@@ -16,7 +16,6 @@ public abstract class Motorcycle implements Vehicle {
      */
     final static Logger LOGGER = LoggerFactory.getLogger(Motorcycle.class);
 
-
     /**
      * Attributes for Motorcycle
      */
@@ -26,74 +25,6 @@ public abstract class Motorcycle implements Vehicle {
     private int maxNumberOfOccupants;
     private Set<String> occupantsNames = Collections.emptySet();
     private boolean engineIsOn;
-
-
-
-    //Implementation for vehicle interface
-    public void accelerateVehicle() {
-        System.out.println("Vrum");
-    }
-
-    public void breakVehicle() {
-        System.out.println("Break");
-    }
-
-    public void turnLeft() {
-        System.out.println("Turning Left");
-    }
-
-    public void turnRight() {
-        System.out.println("Turning Right");
-    }
-
-    public float checkFuel() {
-        return fuel;
-    }
-
-    public void turnVehicleOn() throws EngineException {
-        System.out.println("Vehicle Turned On");
-        if(engineIsOn) {
-            throw new EngineException("Engine is already on.");
-        } else {
-            engineIsOn = true;
-            System.out.println("Vehicle Turned On");
-        }
-    }
-
-    public void turnVehicleOff() throws EngineException {
-        if(!engineIsOn) {
-            throw new EngineException("Engine is already Off.");
-        } else {
-            engineIsOn = false;
-            System.out.println("Vehicle Turned Off");
-        }
-    }
-
-    public int changeToNextGear() {
-        if(actualGear < numberOfGears) {
-            actualGear++;
-            LOGGER.warn("Changing gear.");
-        } else {
-            LOGGER.warn("No more gears left to change");
-        }
-        return actualGear;
-    }
-
-    public int changeToPreviousGear() {
-        if(actualGear > 1) {
-            actualGear--;
-            LOGGER.warn("Changing gear.");
-        } else {
-            LOGGER.warn("No more gears left to change");
-        }
-        return actualGear;
-    }
-
-    public void putOnNeutral() {
-        actualGear = 0;
-        System.out.println("Putting on neutral");
-    }
-
 
     /**
      * Class constructor
@@ -106,6 +37,107 @@ public abstract class Motorcycle implements Vehicle {
         this.numberOfGears = numberOfGears;
         this.maxNumberOfOccupants = maxNumberOfOccupants;
         this.actualGear = 0;
+    }
+
+    //Implementation for vehicle interface
+    @Override
+    public void accelerateVehicle() {
+        System.out.println("Vrum");
+    }
+
+    @Override
+    public void breakVehicle() {
+        System.out.println("Break");
+    }
+
+    @Override
+    public void turnLeft() {
+        System.out.println("Turning Left");
+    }
+
+    @Override
+    public void turnRight() {
+        System.out.println("Turning Right");
+    }
+
+    @Override
+    public float checkFuel() {
+        return fuel;
+    }
+
+    @Override
+    public void turnVehicleOn() throws EngineException {
+        System.out.println("Vehicle Turned On");
+        if(engineIsOn) {
+            throw new EngineException("Engine is already on.");
+        } else {
+            engineIsOn = true;
+            System.out.println("Vehicle Turned On");
+        }
+    }
+
+    @Override
+    public void turnVehicleOff() throws EngineException {
+        if(!engineIsOn) {
+            throw new EngineException("Engine is already Off.");
+        } else {
+            engineIsOn = false;
+            System.out.println("Vehicle Turned Off");
+        }
+    }
+
+    @Override
+    public int changeToNextGear() {
+        if(actualGear < numberOfGears) {
+            actualGear++;
+            LOGGER.warn("Changing gear.");
+        } else {
+            LOGGER.warn("No more gears left to change");
+        }
+        return actualGear;
+    }
+
+    @Override
+    public int changeToPreviousGear() {
+        if(actualGear > 1) {
+            actualGear--;
+            LOGGER.warn("Changing gear.");
+        } else {
+            LOGGER.warn("No more gears left to change");
+        }
+        return actualGear;
+    }
+
+    @Override
+    public void putOnNeutral() {
+        actualGear = 0;
+        System.out.println("Putting on neutral");
+    }
+
+    @Override
+    public void addOccupant(String name) {
+        if (occupantsNames.size() < maxNumberOfOccupants) {
+            try {
+                occupantsNames.add(name);
+            } catch (Exception e) {
+                LOGGER.error("Fail to insert new occupant. Already in motorcycle.", e);
+            }
+        } else {
+            LOGGER.error("The motorcycle is full!");
+        }
+    }
+
+    @Override
+    public void removeOccupant(String name) {
+        if(occupantsNames.size() > 0) {
+            try{
+                occupantsNames.remove(name);
+            } catch (Exception e) {
+                LOGGER.error("Fail to remove the occupant. Not in motorcycle. " + e);
+            }
+        } else {
+            LOGGER.error("There is no more occupants in the motorcycle");
+        }
     }
 
     public float getFuel() {
@@ -132,7 +164,6 @@ public abstract class Motorcycle implements Vehicle {
         this.actualGear = actualGear;
     }
 
-
     public int getMaxNumberOfOccupants() {
         return maxNumberOfOccupants;
     }
@@ -140,41 +171,6 @@ public abstract class Motorcycle implements Vehicle {
     public void setMaxNumberOfOccupants(int maxNumberOfOccupants) {
         this.maxNumberOfOccupants = maxNumberOfOccupants;
     }
-
-    /**
-     *Check if the car is already full and try to add the occupant. If the occupant is already in the car it gets error.
-     *
-     * @param name name of occupant that will enter in the motorcycle
-     */
-    public void addOccupant(String name) {
-        if (occupantsNames.size() < maxNumberOfOccupants) {
-            try {
-                occupantsNames.add(name);
-             } catch (Exception e) {
-                LOGGER.error("Fail to insert new occupant. Already in motorcycle.", e);
-            }
-        } else {
-            LOGGER.error("The motorcycle is full!");
-        }
-    }
-
-
-    /**
-     * Check if has at least one occupant and try to remove. If the ocuppant is not in the motorcycle, show an error.
-     * @param name name of occupant that will exit in the motorcycle
-     */
-    public void removeOccupant(String name) {
-        if(occupantsNames.size() > 0) {
-            try{
-                occupantsNames.remove(name);
-            } catch (Exception e) {
-                LOGGER.error("Fail to remove the occupant. Not in motorcycle. " + e);
-            }
-        } else {
-            LOGGER.error("There is no more occupants in the motorcycle");
-        }
-    }
-
 
     @Override
     public String toString() {

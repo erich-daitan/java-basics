@@ -1,21 +1,17 @@
 package com.daitangroup.vehicleImplementations;
 
 import com.daitangroup.vehiclesTypes.Car;
-
 import java.util.Objects;
 
 public class HondaCivic extends Car {
 
-
-    private int horsePower = 150;
-    private String engineDescription = "2.0 flex fuel";
-    private boolean parkAssist = true;
-
+    private final int horsePower = 150;
+    private final String engineDescription = "2.0 flex fuel";
+    private final boolean parkAssist = true;
 
     public HondaCivic() {
         super(50, 6, 525, 4, 5);
     }
-
 
     @Override
     public String toString() {

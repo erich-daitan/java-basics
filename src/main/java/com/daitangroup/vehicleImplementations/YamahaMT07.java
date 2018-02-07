@@ -5,16 +5,13 @@ import java.util.Objects;
 
 public class YamahaMT07 extends Motorcycle {
 
-
-    private String ignitionType = "Eletric";
-    private int cylinderCapacity = 689;
-    private String fuelType = "Gasoline";
-
+    private final String ignitionType = "Eletric";
+    private final int cylinderCapacity = 689;
+    private final String fuelType = "Gasoline";
 
     public YamahaMT07() {
         super(14, 6, 2);
     }
-
 
     @Override
     public String toString() {

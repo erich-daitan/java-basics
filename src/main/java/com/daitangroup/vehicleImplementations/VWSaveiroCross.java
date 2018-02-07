@@ -1,22 +1,19 @@
 package com.daitangroup.vehicleImplementations;
 
 import com.daitangroup.vehiclesTypes.UtilityVehicle;
-
 import java.util.Objects;
 
 public class VWSaveiroCross extends UtilityVehicle {
 
-   private String engineType = "1.6 16V engine";
-   private String torque = "10,51 kgfm/litro";
-   private boolean tracctionControl = true;
-   private boolean courtesyLight = true;
-   private String interiorDescription = "All black with a big multimedia screen.";
-
+   private final String engineType = "1.6 16V engine";
+   private final String torque = "10,51 kgfm/litro";
+   private final boolean tracctionControl = true;
+   private final boolean courtesyLight = true;
+   private final String interiorDescription = "All black with a big multimedia screen.";
 
     public VWSaveiroCross() {
         super(50, 5, 734, 2,2);
     }
-
 
     @Override
     public String toString() {
