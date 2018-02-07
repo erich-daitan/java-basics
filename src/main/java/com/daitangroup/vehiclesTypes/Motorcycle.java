@@ -203,7 +203,6 @@ public abstract class Motorcycle implements Vehicle {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(fuel, numberOfGears, actualGear, maxNumberOfOccupants, occupantsNames, engineIsOn);
     }
 }

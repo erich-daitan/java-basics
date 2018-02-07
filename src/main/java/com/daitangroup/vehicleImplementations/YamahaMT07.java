@@ -1,6 +1,7 @@
 package com.daitangroup.vehicleImplementations;
 
 import com.daitangroup.vehiclesTypes.Motorcycle;
+import java.util.Objects;
 
 public class YamahaMT07 extends Motorcycle {
 
@@ -22,5 +23,21 @@ public class YamahaMT07 extends Motorcycle {
                 ", cylinderCapacity=" + cylinderCapacity +
                 ", fuelType='" + fuelType + '\'' +
                 '}' + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if ( !(o instanceof YamahaMT07) ) return false;
+        if (!super.equals(o)) return false;
+        YamahaMT07 that = (YamahaMT07) o;
+        return cylinderCapacity == that.cylinderCapacity &&
+                Objects.equals(ignitionType, that.ignitionType) &&
+                Objects.equals(fuelType, that.fuelType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), ignitionType, cylinderCapacity, fuelType);
     }
 }

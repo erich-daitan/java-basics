@@ -227,7 +227,6 @@ public abstract class Car implements Vehicle {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(fuel, numberOfGears, actualGear, loadCapacity, numberOfDoors, maxNumberOfOccupants, occupantsNames, engineIsOn);
     }
 }

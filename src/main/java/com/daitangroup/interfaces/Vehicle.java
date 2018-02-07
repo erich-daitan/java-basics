@@ -16,5 +16,7 @@ public interface Vehicle {
     int changeToNextGear();
     int changeToPreviousGear();
     void putOnNeutral();
+    void addOccupant(String name);
+    void removeOccupant(String name);
 
 }

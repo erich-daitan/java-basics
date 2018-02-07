@@ -233,7 +233,6 @@ public abstract class UtilityVehicle implements Vehicle {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(fuel, numberOfGears, actualGear, loadCapacity, numberOfDoors, kindOfLoads, maxNumberOfOccupants, occupantsNames, engineIsOn);
     }
 }
